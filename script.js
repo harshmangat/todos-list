@@ -8,16 +8,12 @@ const inputLength = () => {
 };
 
 function createListElement() {
-  // var div = document.createElement("div");
   var li = document.createElement("li");
   var delButton = document.createElement("button");
-  // div.classList.add("wrapper");
-  // ul.appendChild(div);
-  // div.append(li, delButton);
   li.classList.add("taskClass");
   li.appendChild(document.createTextNode(input.value));
   ul.appendChild(li);
-  li.append(delButton)
+  li.append(delButton);
   input.value = "";
   delButton.classList.add("delClass");
   delButton.innerHTML = "Delete";
@@ -36,23 +32,21 @@ const createListAfterEnter = (event) => {
 };
 
 const doneTask = (task) => {
-  if( task.target.tagName === "LI"){
-    task.target.classList.toggle("done")
-    
+  if (task.target.tagName === "LI") {
+    task.target.classList.toggle("done");
   }
 };
 
 const deleteListElement = (element) => {
-  if(element.target.className === "delClass"){
-    element.target.parentElement.remove()
+  if (element.target.className === "delClass") {
+    element.target.parentElement.remove();
   }
-}
-
+};
 
 const handleUlClick = (element) => {
   doneTask(element);
   deleteListElement(element);
-}
+};
 
 ul.addEventListener("click", handleUlClick);
 btn.addEventListener("click", createListAfterClick);
